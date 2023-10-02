@@ -5,27 +5,27 @@ const migrationsRun = require("./database/sqlite/migrations")
 const AppError = require("./utils/AppError")
 const express = require("express");
 
-const routes = require("./routes")
+const routes = require("./routes") //ligando a rotas com o server
 
 migrationsRun();
 
 const app = express();
-app.use(express.json())
+app.use(express.json())//trasformas o dados em json
 
-app.use(routes); 
+app.use(routes); //usando as rotas
 
 
 app.use((error, request,response, next) => {
-    if(error instanceof AppError){
+    if(error instanceof AppError){ //error do lado do cliente porque vai ser usa só para error do cliente
         return response.status(error.statuscode).json({
             status: "error",
             message: error.message
         })
     }
 
-    console.error(error);
+    console.error(error); //para debugar caso preciso
 
-    return response.status(500).json({
+    return response.status(500).json({ //caso não sendo um error do cliente vem para cá
         status: "error",
         message: "internal server error"
     })

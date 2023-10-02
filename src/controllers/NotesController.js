@@ -1,6 +1,6 @@
 const knex = require("../database/knex")
 
-class NotesController{
+class NotesController{ //a class determina que todos o métodos são uma função assim sem terque coliocar function
     async create(request, response){
         const { title, description, rating, tags }= request.body;
         const { user_id } = request.params;
@@ -51,7 +51,7 @@ class NotesController{
         const { title, user_id, tags } = request.query;
 
         let notes;
-     console.log(notes)
+    
         if(tags){
             const filterTags = tags.split(',').map(tag => tag.trim());
 
