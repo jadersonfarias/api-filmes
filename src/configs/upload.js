@@ -1,12 +1,12 @@
-const { path } = require("path")
+const  path  = require("path")
 const multer = require("multer")
 const crypto = require("crypto")
 
 const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp") //sai desta pasta sai do src e pega a pasta da raiz tmp
-const UPLOADS_FOLDER = path.resolve(__dirname, "uploads") //dirname é está pasta
+const UPLOADS_FOLDER = path.resolve(TMP_FOLDER, "uploads") //dirname é está pasta
 
 const MULTER = { //O MULTER É RESPONSAVEL PELO UPLOAD DO ARQUIVO
-    Storage: multer.diskStorage({ 
+    storage: multer.diskStorage({ 
         destination: TMP_FOLDER, // pasta que vai receber
         filename(request, file, callback){
             const fileHash = crypto.randomBytes(10).toString("hex"); //cria o nome para o arquivo da pasta
@@ -22,3 +22,4 @@ module.exports = {
     UPLOADS_FOLDER,
     MULTER,
 }
+
