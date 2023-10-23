@@ -3,7 +3,7 @@ const multer = require("multer")
 const crypto = require("crypto")
 
 const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp") //sai desta pasta sai do src e pega a pasta da raiz tmp
-const UPLOADS_FOLDER = path.resolve(TMP_FOLDER, "uploads") //dirname é está pasta
+const UPLOADS_FOLDER = path.resolve(TMP_FOLDER, "uploads") 
 
 const MULTER = { //O MULTER É RESPONSAVEL PELO UPLOAD DO ARQUIVO
     storage: multer.diskStorage({ 
